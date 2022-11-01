@@ -16,7 +16,7 @@ resource "azurerm_network_interface" "nic" {
 resource "azurerm_public_ip" "public_ip" {
   count               = var.numberOfVms
   name                = "pubIP-${count.index}"
-  resource_group_name = var.rgName
+  resource_group_name = azurerm_resource_group.rg.name
   location            = var.location
   allocation_method   = "Dynamic"
 }
@@ -64,6 +64,9 @@ data "azurerm_public_ip" "pubIP" {
   count               = var.numberOfVms
   name                = azurerm_public_ip.public_ip[count.index].name
   resource_group_name = azurerm_resource_group.rg.name
+  depends_on = [
+    azurerm_virtual_machine.vm
+  ]
 }
 
 resource "null_resource" "ping" {
