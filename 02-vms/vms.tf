@@ -83,7 +83,7 @@ resource "null_resource" "ping" {
       "export source=${azurerm_network_interface.nic[count.index].private_ip_addresses[0]}",
       "export destination=${azurerm_network_interface.nic[count.index < var.numberOfVms - 1 ? count.index + 1 : 0].private_ip_addresses[0]}",
       "echo Start ping from $source to $destination",
-      "ping -c 1 $destination; if [ $? -eq 0 ]; then echo $source -> $destination = pass; fi "
+      "ping -c 1 $destination; if [ $? -eq 0 ]; then echo \"$source -> $destination = pass\"; else echo \"$source -> $destination = fail\"; fi "
     ]
 
   }
