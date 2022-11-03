@@ -1,27 +1,29 @@
-
-variable "location" {
-  type = string
-}
-
 variable "rgName" {
   type = string
+  description = "name of the resource group"
 }
-
+variable "location" {
+  type = string
+  description = "location where resources will be created" 
+}
 variable "vnetName" {
   type = string
+  description = "name of the virtual network"
 }
 
-variable "subnetName" {
+variable "subnetId" {
   type = string
+  description = "ID of the subnet to be used"
 }
 
 variable "adminUserName" {
   type = string
+  description = "admin username"
   default = "adminuser"
 }
 
-variable "vms" {
-  type = list(object({
+variable "vm" {
+  type = object({
     name = string
     index = number
     size = string
@@ -31,5 +33,5 @@ variable "vms" {
       sku = string
       version = string
     })
-  }))
+  })
 }

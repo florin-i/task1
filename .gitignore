@@ -4,3 +4,4 @@
 *.tfvars
 *.tfvars.json
 .DS_Store
+.vscode

@@ -4,11 +4,10 @@ terraform {
       source  = "hashicorp/azurerm"
       version = "=3.29.1"
     }
-    null = {
-      source = "hashicorp/null"
+    random = {
+      source = "hashicorp/random"
     }
   }
   required_version = ">=0.13"
 
-  backend "azurerm" {}
 }
