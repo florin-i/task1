@@ -10,12 +10,13 @@ resource "azurerm_resource_group" "rg" {
 }
 
 module "vm" {
-  for_each = { for vm in var.vms : vm.index => vm}
+  for_each = { for index, vm in var.vms : index => vm}
   source = "./modules/vm"
   location = var.location
   rgName = azurerm_resource_group.rg.name
   vnetName = var.vnetName
   subnetId = azurerm_subnet.sub.id
+  sshKey = var.sshKey
   vm = each.value
   
   depends_on = [

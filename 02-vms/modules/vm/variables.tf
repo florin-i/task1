@@ -22,10 +22,14 @@ variable "adminUserName" {
   default = "adminuser"
 }
 
+variable "sshKey" {
+  type = string
+  description = "ssh public key"
+}
+
 variable "vm" {
   type = object({
     name = string
-    index = number
     size = string
     image = object({
       publisher = string

@@ -20,10 +20,13 @@ variable "adminUserName" {
   default = "adminuser"
 }
 
+variable "sshKey" {
+  type = string
+}
+
 variable "vms" {
   type = list(object({
     name = string
-    index = number
     size = string
     image = object({
       publisher = string

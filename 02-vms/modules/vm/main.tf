@@ -1,5 +1,9 @@
 resource "random_password" "password" {
   override_special = "{}[]().-_"
+  min_lower = 2
+  min_upper = 2
+  min_numeric = 2
+  min_special = 2
   length = 14
 }
 
@@ -31,6 +35,10 @@ resource "azurerm_virtual_machine" "vm" {
   }
   os_profile_linux_config {
     disable_password_authentication = false
+    ssh_keys {
+      path = "/home/${var.adminUserName}/.ssh/authorized_keys"
+      key_data = var.sshKey
+    }
   }
 
 }
