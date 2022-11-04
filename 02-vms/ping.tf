@@ -43,8 +43,10 @@ resource "null_resource" "consolidate" {
   ]
 }
 
-data "local_file" pings {
-  filename = "out/out.txt"
+data "external" "pings" {
+  program   = [
+    "/bin/bash", "scripts/extract_txt.sh"
+  ]
   depends_on = [
     null_resource.consolidate
   ]

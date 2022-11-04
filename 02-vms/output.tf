@@ -1,4 +1,4 @@
 
 output "pings" {
-  value = data.local_file.pings.content
+  value = data.external.pings.result.my_pings
 }
