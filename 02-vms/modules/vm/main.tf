@@ -8,7 +8,7 @@ resource "random_password" "password" {
 }
 
 resource "azurerm_virtual_machine" "vm" {
-  name                             = var.vm.name
+  name                             = var.vmName
   location                         = var.location
   resource_group_name              = var.rgName
   network_interface_ids            = [azurerm_network_interface.nic.id]
@@ -23,13 +23,13 @@ resource "azurerm_virtual_machine" "vm" {
     version   = var.vm.image.version
   }
   storage_os_disk {
-    name              = "${var.vm.name}-os-disk"
+    name              = "${var.vmName}-os-disk"
     caching           = "ReadWrite"
     create_option     = "FromImage"
     managed_disk_type = "Standard_LRS"
   }
   os_profile {
-    computer_name  = var.vm.name
+    computer_name  = var.vmName
     admin_username = var.adminUserName
     admin_password = random_password.password.result
   }

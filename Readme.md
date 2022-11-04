@@ -23,11 +23,9 @@ The following resources will be created also:
  - rgName = name of the resource group that will be created 
  - vnetName = name of the Vnet that will be created
  - subnetName = name of the subnet that will be created
- - vms = a list of VMs, each VM beeing an object with the following atributes:
-    - name = the name of VM
+ - sshKey = SSH public key to be added to VMs
+ - vms = a map of VMs, the key being the name of VM and the value an object as follow:
     - size = the VM size 
-    - sshKey = SSH public key to be added to VMs
-    - index = an integer starting from 1 for first VM and for each VM the value is incremented with 1
     - image = an object that describe the image used to create the VM with the attributes:
         - offer
         - publisher
@@ -40,32 +38,33 @@ location = "westeurope"
 rgName = "task-01"
 vnetName = "VNet01"
 subnetName = "VMs"
-vms = [ {
-  image = {
-    offer = "UbuntuServer"
-    publisher = "Canonical"
-    sku = "16.04-LTS"
-    version = "latest"
-  }
-  name = "test-vm01"
-  size = "Standard_B1s"
-},{
-  image = {
-    offer = "UbuntuServer"
-    publisher = "Canonical"
-    sku = "16.04-LTS"
-    version = "latest"
-  }
-  name = "test-vm02"
-  size = "Standard_B1s"
-},{
-  image = {
-    offer = "UbuntuServer"
-    publisher = "Canonical"
-    sku = "16.04-LTS"
-    version = "latest"
-  }
-  name = "test-vm03"
-  size = "Standard_B1s"
-}]
+sshKey = "-----------> your public ssh key here <-----------"
+vms = { 
+  test-vm01 = {
+    size = "Standard_B1s"
+    image = {
+      offer = "UbuntuServer"
+      publisher = "Canonical"
+      sku = "16.04-LTS"
+      version = "latest"
+    }
+  },
+  test-vm02 = {
+    size = "Standard_B1s"
+    image = {
+      offer = "UbuntuServer"
+      publisher = "Canonical"
+      sku = "16.04-LTS"
+      version = "latest"
+    }
+  },
+  test-vm03 = {
+    size = "Standard_B1s"
+    image = {
+      offer = "UbuntuServer"
+      publisher = "Canonical"
+      sku = "16.04-LTS"
+      version = "latest"
+    }
+  }}
 ```

@@ -1,6 +1,6 @@
 resource "azurerm_network_interface" "nic" {
   location            = var.location
-  name                = "${var.vm.name}-nic"
+  name                = "${var.vmName}-nic"
   resource_group_name = var.rgName
   ip_configuration {
     name                          = "internal"
@@ -12,7 +12,7 @@ resource "azurerm_network_interface" "nic" {
 }
 
 resource "azurerm_public_ip" "public_ip" {
-  name                = "${var.vm.name}-pip"
+  name                = "${var.vmName}-pip"
   resource_group_name = var.rgName
   location            = var.location
   allocation_method   = "Static"

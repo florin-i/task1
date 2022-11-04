@@ -29,13 +29,16 @@ variable "sshKey" {
 
 variable "vm" {
   type = object({
-    name = string
-    size = string
-    image = object({
-      publisher = string
-      offer = string
-      sku = string
-      version = string
-    })
+      size = string
+      image = object({
+        publisher = string
+        offer = string
+        sku = string
+        version = string
+      })
   })
+}
+
+variable "vmName" {
+  type = string
 }

@@ -25,8 +25,7 @@ variable "sshKey" {
 }
 
 variable "vms" {
-  type = list(object({
-    name = string
+  type = map(object({
     size = string
     image = object({
       publisher = string
