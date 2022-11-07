@@ -16,7 +16,7 @@ variable "subnetName" {
 }
 
 variable "adminUserName" {
-  type = string
+  type    = string
   default = "adminuser"
 }
 
@@ -29,9 +29,13 @@ variable "vms" {
     size = string
     image = object({
       publisher = string
-      offer = string
-      sku = string
-      version = string
+      offer     = string
+      sku       = string
+      version   = string
     })
   }))
+  validation {
+    condition     = length(var.vms) > 1 && length(var.vms) <= 100
+    error_message = "The number of VMs must be between 2 and 100."
+  }
 }

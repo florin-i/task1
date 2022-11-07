@@ -37,7 +37,7 @@ resource "null_resource" "consolidate" {
     cluster_instance_ids = join(",", values(module.vm)[*].vm_id)
   }
   provisioner "local-exec" {
-    command = "echo '' > out/out.txt && cat out/pingvm*.txt >> out/out.txt"
+    command = "echo '' > out/out.txt && cat out/pingvm*.txt >> out/out.txt && rm -f out/pingvm*.txt"
   }
 
   depends_on = [

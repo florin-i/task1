@@ -5,4 +5,4 @@
 *.tfvars.json
 .DS_Store
 .vscode
-**/out/ping*
+**/out/*
